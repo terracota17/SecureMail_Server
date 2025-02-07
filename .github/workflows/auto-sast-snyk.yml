@@ -2,7 +2,7 @@ name: GitHub Auto SAST Snyk Evaluation
 
 on: 
   push
-  # pull_request  # Puedes activarlo si lo necesitas
+  # pull_request  
 
 permissions:
   contents: write
