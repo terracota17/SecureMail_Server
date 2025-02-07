@@ -1,9 +1,9 @@
 aiohttp
 fastapi
+xgboost
 joblib
 numpy
 pandas
-xgboost
 python-dotenv
 scikit_learn
 slowapi
