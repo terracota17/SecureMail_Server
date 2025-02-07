@@ -16,8 +16,12 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Configurar Snyk
-        uses: snyk/actions/setup@master
+      - name: Configurar entorno virtual y instalar dependencias
+        run: |
+          python3 -m venv venv  
+          source venv/bin/activate  
+          pip install -r requirements.txt  
+
       
       - name: Instalar dependencias de Node.js
         uses: actions/setup-node@v4
