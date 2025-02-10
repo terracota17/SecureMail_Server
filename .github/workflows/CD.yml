@@ -9,14 +9,10 @@ jobs:
   Deploy-on-Render:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Trigger deploy with Render CLI
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           CI: true
         run: |
-          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
-          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
-          -H "Content-Type: application/json"
+          render login ${{ secrets.RENDER_API_KEY }}
+          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm  --wait 
