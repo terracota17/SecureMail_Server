@@ -1,7 +1,7 @@
 name: GitHub Auto SAST Snyk Evaluation
 
 on:
-  pull_request:
+  push:
     branches:
       - development
 
