@@ -14,4 +14,6 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           CI: true
         run: |
-          curl -X POST "https
+          render login ${{ secrets.RENDER_API_KEY }}
+          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm   
+     
