@@ -1,8 +1,9 @@
 name: GitHub Auto SAST Snyk Evaluation
 
-on: 
-  #push
-  pull_request  
+on:
+  pull_request:
+    branches:
+      - development
 
 permissions:
   contents: write
@@ -31,15 +32,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk-code.sarif
-          
-  Deploy-on-Render:
-    runs-on: self-hosted
-    needs: Auto-snyk-test
-    steps:
-      - name: Trigger deploy with Render CLI
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          CI: true
-        run: |
-          render login ${{ secrets.RENDER_API_KEY }}
-          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm
+
