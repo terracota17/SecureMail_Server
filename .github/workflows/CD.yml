@@ -7,7 +7,7 @@ on:
 
 jobs:
   Deploy-on-Render:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Trigger deploy with Render CLI
         env:
