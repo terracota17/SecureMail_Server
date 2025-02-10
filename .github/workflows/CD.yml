@@ -20,5 +20,6 @@ jobs:
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          CI: true
         run: |
           render deploys create $RENDER_SERVICE_ID  --output json --confirm --wait
