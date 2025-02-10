@@ -21,4 +21,5 @@ jobs:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
+          render login RENDER_API_KEY
           render deploys create $RENDER_SERVICE_ID --api-key $RENDER_API_KEY --output json --confirm --wait
