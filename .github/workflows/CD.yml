@@ -21,4 +21,4 @@ jobs:
           CI: true
         run: |
           render login ${{ secrets.RENDER_API_KEY }}
-          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm  --wait 
+          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm  --wait -o
