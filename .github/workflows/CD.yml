@@ -13,8 +13,7 @@ jobs:
   
       - name: Instalar Render CLI
         run: |
-          curl -fsSL https://render.com/download/render-cli | bash
-          echo "$HOME/.render-cli/bin" >> $GITHUB_PATH
+           curl -fsSL https://raw.githubusercontent.com/render-oss/cli/refs/heads/main/bin/install.sh | sh
           
       - name: Trigger deploy with Render CLI
         env:
