@@ -9,10 +9,10 @@ jobs:
   Deploy-on-Render:
     runs-on: ubuntu-latest
     steps:
-   
-      - name: Install Render CLI
-        run: curl -fsSL https://render.com/download/render-cli.sh | bash
-
       - name: Trigger deploy with Render CLI
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          CI: true
         run: |
-          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --api-key ${{ secrets.RENDER_API_KEY }} --wait --confirm
+          render login ${{ secrets.RENDER_API_KEY }}
+          render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output json --confirm  --wait 
