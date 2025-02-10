@@ -3,12 +3,19 @@ name: GitHub Auto Render CD Deployment
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   Deploy-on-Render:
     runs-on: ubuntu-latest
+
     steps:
+  
+      - name: Instalar Render CLI
+        run: |
+          curl -fsSL https://render.com/download/render-cli | bash
+          echo "$HOME/.render-cli/bin" >> $GITHUB_PATH
+          
       - name: Trigger deploy with Render CLI
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
