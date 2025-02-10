@@ -1,1 +1,17 @@
+name: GitHub Auto Render CD Deployment
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy-on-Render:
+    runs-on: self-hosted
+    steps:
+      - name: Trigger deploy with Render CLI
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          CI: true
+        run: |
+          curl -X POST "https
